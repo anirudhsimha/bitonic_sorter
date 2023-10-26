@@ -1,4 +1,4 @@
-module bitonic_sorter(output wire [31:0]01,02, input wire [31:0]A, B, input wire clk, rst, dir, enable);
+module bitonic_sorter(output wire [31:0]o1,o2, input wire [31:0]A, B, input wire clk, rst, dir, enable);
 reg sel;
 reg [31:0]out1, out2;
 always @ (posedge clk, posedge rst)
@@ -13,14 +13,14 @@ begin
   if (dir == 1'b0)
     begin
       sel A > B;
-      outl<= (sel)?B:A;
-      out2 <= (sel)?A:B;
+      outl<=(sel)?B:A;
+      out2<=(sel)?A:B;
     end
-  if (dir=1'b1)
+    if (dir == 1'b1)
     begin
       sel A < B;
-      out1 <= (sel)?B:A;
-      out2<= (sel)?A:B;
+      out1<=(sel)?B:A;
+      out2<=(sel)?A:B;
     end
   end
 end
